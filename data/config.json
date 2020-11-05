@@ -1,0 +1,45 @@
+{
+	"screensize": [
+		{"fullscreen": "false",
+		"displaynumber":"2",
+		"width": "1024",
+		"height": "1024"}
+	],
+
+	"MIDIdevice": [
+		{"device": "Maschine Jam - 1"},
+		{"device": "BMT 1"}
+	] ,
+
+	"MIDIchannel":[
+		{"channel": "11"}
+	] ,
+
+	"wordpacks":[
+		{"words":["Giant","Space","Robot","(╯°_°）╯︵"]},
+		{"words":["It's","just","a","party","so","now","come","with","me"]},
+		{"words":["Make","Some","Noise","\\_(:o)_/"]},
+		{"words":["Make","Noise"]},
+		{"words":["OBEY","CONSUME","BUY","CONFORM"]},
+		{"words":["1","2","3","4"]},
+		{"words":["the","rhythm","is","hot"]},
+		{"words":["One","Nation","Under","a","Groove"]},
+		{"words":["You","Bet","Yeah",""]},
+		{"words":["Wooo","","Yeah",""]},
+		{"words":["Sometimes","I","feel","like","I","wanna","go","BANG!"]},
+		{"words":["But","you","must","smile","through","your","tears","and","move","on","and","keep","on","moving",""]},
+		{"words":["I","can't","stop","this","feeling"]},
+		{"words":["Let","yourself","go","ooooooo"]},
+		{"words":["And","we","walk","hand","in","hand"]},
+		{"words":["Vote","for","change","!"]}
+	],
+
+	"palettes":[
+		{"colours":["#FF0000","#FFC000","#E0FF00","#7EFF00","#21FF00","#00FF41","#00FF9F","#00FDFF","#009FFF","#003DFF","#2100FF","#8300FF","#E500FF","#0052FF","#FF007C","#1000FF","#FFFFFF"]},
+		{"colours":["#ffa638", "#c95656", "#a95e93", "#bd0606", "#c33626"]},
+   		{"colours":["#49b06a", "#8db00a", "#907eab", "#785a8d", "#b4c559"]}, 
+    	{"colours":["#ff0000", "#ce141e", "#ab0c3c", "#890440", "#670445"]}, 
+    	{"colours":["#ff71ce", "#01cdfe", "#05ffa1", "#b967ff", "#fffb96"]}, 
+    	{"colours":["#fe0000", "#fdfe02", "#0bff01", "#011efe", "#fe00f6"]} 
+    ],
+}

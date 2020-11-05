@@ -1,0 +1,49 @@
+
+CC
+100, deck a set volume
+101, deck b set volume
+102, deck c set volume
+103, deck d set volume
+
+110, deck a is palying
+111, deck b is playing
+112, deck c is playing
+113, deck d is playing
+
+1, deck a ready hotcue
+2, deck b ready hotcue
+3, deck c ready hotcue
+4, deck d ready hotcue
+
+56, deck a set hotcue pack
+57, deck b set hotcue pack
+58, deck c set hotcue pack
+59, deck d set hotcue pack
+
+105, deck a filter
+106, deck b filter
+107, deck c filter
+108, deck d filter
+
+21, select main visualiser
+45, visualiser browse knob
+46, toggle black or white background mode
+48, visualiser scaling
+51, not used
+27, visualiser button 1
+28, visualiser button 2
+52, visualiser fader  1
+53, visualiser fader 2
+26, toggle waveform display
+49, waveform scaling
+29, toggle kaleidoscope
+50, beat words transparency
+41, increment background colour and beat words
+30, toggle background colour chnage on beat
+47, select beat words pack
+60, select post processing shader
+61, toggle use of post processing shader
+54, post processing shader paramater 1
+55, post processing shader paramater 2
+64, shader for delay
+65, shader for gate/slice/mesh
