@@ -1,6 +1,7 @@
 // ************************************************************************************* //<>//
 // * giantspacerobot visualiser for Traktor                                            *
-// * Heavily based on Tobias Wehrum's awesome Oblivion visualisation                   *
+// * Heavily based on awesome visualisers from Tobias Wehrum (Oblivion), Ben Farahmand's
+// * (Sprocket) and mojovideotech (Candywarp shader)
 // * (attributed below)                                                                *
 // * This extends giantspacerobot's https://maps.djtechtools.com/mappings/6883         *
 // * to use a page on the Maschine Jam to control various parameters in a visualiser.  *
