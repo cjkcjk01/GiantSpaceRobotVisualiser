@@ -43,13 +43,27 @@ A visualiser that is tightly linked to Traktor, responding to a combination of t
 
   
 
-# Software
+# Software requirements
 
-Traktor 3.4.x
+- **Traktor 3.4.x**
 
-Virtual midi port, I use Bome Midi Translator and route traktor through its virtual port. You should be able to use any 
+- **A Virtual midi port**
+  - I use Bome Midi Translator (https://www.bome.com/) and route Traktor through its virtual port
+  - Loopmidi is another popular https://www.tobias-erichsen.de/software/loopmidi.html
+- **Processing 3.5.4**
+  - https://processing.org/download/
+- GiantSpaceRobot visualiser code
+  - https://github.com/cjkcjk01/GiantSpaceRobotVisualiser
+
+
+
+# Hardware requirements
+
+I use a Traktor Kontrol S5 and a Native Instrument's Maschine Jam to control Traktor. You do not need a hardware controller at all, but you need to map the appropriate MIDI outputs in Traktor to use the visualiser to its full potential. Details of the midi values used are in a the MIDI section below.can use any midi controller for Traktor (if you have a mapping for it) 
 
 # Configuration
+
+There are a lot configuration options, detailed below
 
 ## Config file
 
@@ -82,6 +96,56 @@ The Oblivion visualiser uses a cool way to configure its colour gradients, it si
 ## Coding
 
 The GiantSpaceRobot Traktor visualiser is written using the [Processing](https://processing.org/) framework, the code is available under an open source license, feel free to modify. I will paste a link to a github repository when it is ready.
+
+# Midi Controls
+
+The visualiser uses the following MIDI CC values to control its functions. A config file for the Maschine Jam is included, if you are using some other controller then you will need to be able to configure it to send these values.
+
+
+
+| MIDI CC Number | Value                                                        | Description                                                  |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 100            | 0-127                                                        | Deck A volume                                                |
+| 101            | 0-127                                                        | Deck B volume                                                |
+| 102            | 0-127                                                        | Deck C volume                                                |
+| 103            | 0-127                                                        | Deck D volume                                                |
+| 110            | 0-126 = off, 127 = on                                        | Deck A play status                                           |
+| 111            | 0-126 = off, 127 = on                                        | Deck B play status                                           |
+| 112            | 0-126 = off, 127 = on                                        | Deck C play status                                           |
+| 113            | 0-126 = off, 127 = on                                        | Deck D play status                                           |
+| 1              | 15 = Hot cue 1<br/>31 = Hot cue 2<br/>47 = Hot cue 3<br/>63 = Hot cue 4<br/>79 = Hot cue 5<br/>95 = Hot cue 6<br/>111 = Hot cue 7<br />127 = Hot cue 8 | Deck A hot cue pressed                                       |
+| 2              | 15 = Hot cue 1<br/>31 = Hot cue 2<br/>47 = Hot cue 3<br/>63 = Hot cue 4<br/>79 = Hot cue 5<br/>95 = Hot cue 6<br/>111 = Hot cue 7<br />127 = Hot cue 8 | Deck B hot cue pressed                                       |
+| 3              | 15 = Hot cue 1<br/>31 = Hot cue 2<br/>47 = Hot cue 3<br/>63 = Hot cue 4<br/>79 = Hot cue 5<br/>95 = Hot cue 6<br/>111 = Hot cue 7<br />127 = Hot cue 8 | Deck C hot cue pressed                                       |
+| 4              | 15 = Hot cue 1<br/>31 = Hot cue 2<br/>47 = Hot cue 3<br/>63 = Hot cue 4<br/>79 = Hot cue 5<br/>95 = Hot cue 6<br/>111 = Hot cue 7<br />127 = Hot cue 8 | Deck D hot cue pressed                                       |
+| 56             | 0-7                                                          | Deck A, set hot cue pack. The value indicates which pack to associate with the deck |
+| 57             | 0-7                                                          | Deck B, set hot cue pack. The value indicates which pack to associate with the deck |
+| 58             | 0-7                                                          | Deck C, set hot cue pack. The value indicates which pack to associate with the deck |
+| 59             | 0-7                                                          | Deck D, set hot cue pack. The value indicates which pack to associate with the deck |
+| 105            | 0-127                                                        | Deck A filter value                                          |
+| 106            | 0-127                                                        | Deck B filter value                                          |
+| 107            | 0-127                                                        | Deck C filter value                                          |
+| 108            | 0-127                                                        | Deck D filter value                                          |
+| 21             | 1,2                                                          | Select main visualiser. 1 chooses the previous one, 2 chooses the next one |
+| 45             | 0-127                                                        | Visualiser browse knob, generally an encoder, function varies depending on which main visualiser is running |
+| 46             | Toggles if value > 100                                       | Toggle black or white background mode                        |
+| 48             | 0-127                                                        | Visualiser scaling                                           |
+| 27             | Toggles if value > 100                                       | Visualiser button 1                                          |
+| 28             | Toggles if value > 100                                       | Visualiser button 2                                          |
+| 52             | 0-127                                                        | Visualiser fader 1                                           |
+| 53             | 0-127                                                        | Visualiser fader 2                                           |
+| 26             | Toggles if value > 100                                       | Toggle waveform display                                      |
+| 49             | 0-127                                                        | Waveform scaling                                             |
+| 29             | Toggles if value > 100                                       | Toggle kaleidoscope mode                                     |
+| 50             | 0-127                                                        | Beat words opacity                                           |
+| 41             | triggers next step if value > 120                            | Increment background colour and beat words                   |
+| 30             | Toggles if value > 100                                       | Toggle background colour change on beat                      |
+| 47             | 0 = off<br />1-16 = number of wordpack to use                | Select beat words pack                                       |
+| 60             | 1-15                                                         | Select post processing shader                                |
+| 61             | Toggles if value > 100                                       | Toggle post processing shader                                |
+| 54             | 0-127                                                        | Post processing parameter 1                                  |
+| 55             | 0-127                                                        | Post processing parameter 2                                  |
+| 64             | On if value > 100,<br />off if value = 0                     | Display delay/echo effect shader                             |
+| 65             | On if value > 100,<br />off if value = 0                     | Display gater/slice/mash effect shader                       |
 
 # Acknowledgements
 
