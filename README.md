@@ -4,6 +4,46 @@
 
 A visualiser that is tightly linked to Traktor, responding to a combination of the audio and controls such as filters and effects. It extends my Maschine Jam mapping ([https://maps.djtechtools.com/mappings/6883](https://maps.djtechtools.com/mappings/6883)) to control the visualiser.
 
+Warning! The install and setup for this is fiddly. You need to be familiar and comfortable with Traktor, Traktor mappings, Midi and programming in Processing (if you want to tweak things).
+
+# Installation
+
+There are four main parts to the install
+
+1. Setting up Traktor and the Maschine Jam, setting up a virtual midi port and setting up processing
+   1. Traktor TSI files and Machine Jam config file and instructions are at https://maps.djtechtools.com/mappings/6883
+
+- Processing
+  - Latest version at https://processing.org/download/, the version used was 3.5.4
+  - You will need the following libraries installed
+    - Minim
+    - Midibus
+    - spout
+- Virtual Midi port, there are lots of options, I used Bome Midi Translator (https://www.bome.com/) and route Traktor through its virtual port. Loopmidi is another popular choice https://www.tobias-erichsen.de/software/loopmidi.html
+- GSR visualiser, code is on Github, feel free to download and use, suggest additional features or pull a copy and make some updates. My code could do with lots of refinements!
+  - https://github.com/cjkcjk01/GiantSpaceRobotVisualiser
+
+The steps are:
+
+1. Have Traktor 3.4.0 (or above) installed
+
+2. Set up a virtual midi port (note its name)
+
+3. Install the tsi files in Traktor
+
+4. Install the processing framework
+
+5. Download the visualiser code and put it in the Processing sketch directory
+
+6. Find the config.json file in the sketch\data directory
+
+   1. Make sure you change the midi ports to the correct ones for your system, there are normally two, the Maschine Jam one and what ever the name is for your virtual midi port.
+   2. Set the screen size appropriately, I run it full screen on my second display. Bear in mind that the bigger the window the more processing power it will require, your framerate may suffer. Adjust to suit your system. Low resolutions still look great especially on a projector.
+
+7. I recommend starting the various apps in this order; virtual midi port, Traktor, Processing.
+
+   
+
 ## Functionality
 
  - Three built in visualisations, each with a set of tweakable parameters
@@ -40,6 +80,7 @@ A visualiser that is tightly linked to Traktor, responding to a combination of t
 	 - Echo – Uses a [sobel](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi5hI7g_M3sAhUhwuYKHeIIBwUQFjACegQIBBAC&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FSobel_operator&usg=AOvVaw2TW22hgpeNPJEQ1dSzk4R0) effect while a delay is engaged
 	 - Slice/mash/gate – uses a vhs-jitter effect
  - Beat background, changes the background colour on each beat. Cycles through a configurable palette.
+ - SPOUT option, outputs the display texture for use in other apps. Useful for things like projection mapping.
 
   
 
@@ -97,6 +138,22 @@ The Oblivion visualiser uses a cool way to configure its colour gradients, it si
 
 The GiantSpaceRobot Traktor visualiser is written using the [Processing](https://processing.org/) framework, the code is available under an open source license, feel free to modify. I will paste a link to a github repository when it is ready.
 
+# Keyboard Controls
+
+There are a few keyboard controls that are useful when you are debugging and dont want to reach for your midi controller.
+
+| Key  | Description                                    |
+| ---- | ---------------------------------------------- |
+| i    | Info, useful info such as FPS                  |
+| h    | Displays help                                  |
+| ?    | Displays help                                  |
+| w    | Toggles the waveform                           |
+| d    | Next visualiser                                |
+| a    | previous visualiser                            |
+| p    | Toggle SPOUT option (see Stout section in doc) |
+
+
+
 # Midi Controls
 
 The visualiser uses the following MIDI CC values to control its functions. A config file for the Maschine Jam is included, if you are using some other controller then you will need to be able to configure it to send these values.
@@ -146,6 +203,16 @@ The visualiser uses the following MIDI CC values to control its functions. A con
 | 55             | 0-127                                                        | Post processing parameter 2                                  |
 | 64             | On if value > 100,<br />off if value = 0                     | Display delay/echo effect shader                             |
 | 65             | On if value > 100,<br />off if value = 0                     | Display gater/slice/mash effect shader                       |
+
+# SPOUT
+
+SPOUT is a way of directing the display output to another application, such as a projection mapping app. I have used it successfully with vpt8 (https://hcgilje.wordpress.com/vpt/)
+
+Details at;
+
+https://spout.zeal.co/
+
+https://github.com/leadedge/SpoutProcessing
 
 # Acknowledgements
 
