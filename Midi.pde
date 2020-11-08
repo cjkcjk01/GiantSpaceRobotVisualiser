@@ -14,7 +14,7 @@ void noteOff(int channel, int pitch, int velocity, long timestamp, String bus_na
 
 void controllerChange(int channel, int number, int value, long timestamp, String bus_name) {
   //println("Control Change: Channel = " + channel + " CC" + number + " Value = "+value + " bus name = " + bus_name);
-  
+
   if (channel == midiChannel) {
     try {
       Class[] cls = new Class[1];
@@ -166,10 +166,6 @@ void onCCChange45(int value) {
 // set the scaling for the fft analysis, which is it's sensitivity to volume
 void onCCChange48(int value) {  
   visualisers.setScaling(value);
-}
-
-// set the display rotation
-void onCCChange51(int value) {
 }
 
 // Button1 for visualiser
@@ -342,6 +338,8 @@ void onCCChange42(int value) {
 void onCCChange43(int value) {
 }
 void onCCChange44(int value) {
+}
+void onCCChange51(int value) {
 }
 void onCCChange62(int value) {
 }

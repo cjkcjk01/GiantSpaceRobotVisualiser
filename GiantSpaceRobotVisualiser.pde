@@ -38,7 +38,6 @@
  */
 
 import themidibus.*;
-import javax.sound.midi.MidiMessage;
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import java.lang.reflect.Method;
@@ -372,6 +371,6 @@ void displayHelp() {
     + "w - Waveform toggle\n"
     + "d - Next Visualiser\n"
     + "a - Prev Visualiser\n"
-    + "p - STOUT toggle", width -200, 30); 
+    + "p - SPOUT toggle", width -200, 30); 
   pop();
 }
