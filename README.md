@@ -40,8 +40,12 @@ The steps are:
    1. Make sure you change the midi ports to the correct ones for your system, there are normally two, the Maschine Jam one and what ever the name is for your virtual midi port.
    2. Set the screen size appropriately, I run it full screen on my second display. Bear in mind that the bigger the window the more processing power it will require, your framerate may suffer. Adjust to suit your system. Low resolutions still look great especially on a projector.
 
-7. I recommend starting the various apps in this order; virtual midi port, Traktor, Processing.
+7. Load GiantSpaceRobotVisualiser.pde into processing and try it out!
 
+   
+   
+   I recommend starting the various apps in this order; virtual midi port, Traktor, Processing.
+   
    
 
 ## Functionality
