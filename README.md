@@ -100,7 +100,11 @@ The steps are:
 
 # Hardware requirements
 
-I use a Traktor Kontrol S5 and a Native Instrument's Maschine Jam to control Traktor. You do not need a hardware controller at all, but you need to map the appropriate MIDI outputs in Traktor to use the visualiser to its full potential. Details of the midi values used are in a the MIDI section below.can use any midi controller for Traktor (if you have a mapping for it) 
+I use a Traktor Kontrol S5 and a Native Instrument's Maschine Jam to control Traktor. You do not need a hardware controller at all, but you need to map the appropriate MIDI outputs in Traktor to use the visualiser to its full potential. Details of the midi values used are in a the MIDI section below. You can use any midi controller for Traktor (if you have a mapping for it) 
+
+# Performance
+
+The performance is directly related to the window size, if your system is struggling then reduce the size in the config file. If you are using it with a projector then low resolutions look really good. I get 60fps on my system, but it is a gaming PC with a decent GPU.
 
 # Configuration
 
