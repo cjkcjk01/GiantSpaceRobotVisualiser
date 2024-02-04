@@ -1,13 +1,13 @@
-// A class for deck specific settings, used to store things like volume, play/stop status and to 
+// A class for deck specific settings, used to store things like volume, play/stop status and to
 // link a specific hotcue pack to the deck
 class DeckSettings {
-  String  name;
-  int     hotcuePack;
-  int     hotcueIndex;
-  int     faderValue;
-  float   filterValue;
-  boolean blurOn;
-  boolean playing;
+  String    name;
+  int       hotcuePack;
+  int       hotcueIndex;
+  int       faderValue;
+  float     filterValue;
+  boolean   blurOn;
+  boolean   playing;
 
   DeckSettings(String n) {
     name        = n;
@@ -21,39 +21,27 @@ class DeckSettings {
 
   // sets the hotcue pack associated with the deck
   void setPack(int value) {
+    int pack = (int)map(value, 0, 127, 0, 7);
+
     // check to see if there is a matching pack loaded
-    if (value > hotcuePacks.size()) {
-      println ("Warning - Pack number " + value + " does not exist. /n Setting to pack 0 ");
+    if (pack > hotcuePacks.size()) {
+      println ("Warning - Pack number " + pack + " does not exist. /n Setting to pack 0 ");
       hotcuePack  = 0;
       hotcueIndex = 0;
     } else {
-      hotcuePack = value - 1;
+      hotcuePack = pack;
       hotcueIndex = 0;
     }
+    cueInfo.setText("hc" + pack);
   }
 
   // cues up the next hotcue to draw
+  // The value parameter is set by Traktor, it is a midi CC value in the range 0-127. Which hotcue has been pressed
+  // is indicated by the range of the midi values
   void readyHotcue(int value) {
-    if (faderValue > 25) {
-      if (value == 15) {
-        hotcueIndex = 0;
-      } else if (value == 31) {
-        hotcueIndex = 1;
-      } else if (value == 47) {
-        hotcueIndex = 2;
-      } else if (value == 63) {
-        hotcueIndex = 3;
-      } else if (value == 79) {
-        hotcueIndex = 4;
-      } else if (value == 95) {
-        hotcueIndex = 5;
-      } else if (value == 111) {
-        hotcueIndex = 6;
-      } else if (value == 127) {
-        hotcueIndex = 7;
-      }
-      hotcuePacks.readyHotcue(hotcuePack, hotcueIndex);
-    }
+
+    hotcueIndex = (int)map(value, 0, 127, 0, 7);
+    hotcuePacks.readyHotcue(hotcuePack, hotcueIndex);
   }
 
   void setVolume(int v) {
@@ -74,8 +62,8 @@ class DeckSettings {
   }
 
   void setFilter(int v) {
-    filterValue = abs(map(v, 1, 127, -8, 8));
-    if (filterValue < 0.15) {
+    filterValue = map(v, 1, 127, -8, 8);
+    if ((filterValue > -0.15) && (filterValue < 0.15)) {
       filterValue = 0;
     }
     isBlurOn();
@@ -85,21 +73,77 @@ class DeckSettings {
     return filterValue;
   }
 
-  String getStatus() {
-    String s;
+  // Display the deck status on the screen
+  void showStatus(PVector pos) {
+
+    push();
+    // Show Deck Name
+    textFont(font, 200);
+    textSize(72);
+    text(name, pos.x, pos.y);
+
+    // show play/stop stasus
+    push();
+    translate(pos.x, pos.y + 15);
+
+    int size = 40;
     if (playing) {
-      s = "Playing";
+      triangle(0, 0, 0, size, 0 + size, size/2);
     } else {
-      s = "Paused";
+      square(0, 0, size);
     }
-    String status = "Deck " + name + " is " + s + " fader = " + faderValue + " filter = " + filterValue;
-    return status;
+    pop();
+
+    // Show fader value
+    push();
+    translate(pos.x, pos.y + 60);
+
+    fill(100);
+    rect(0, 0, 25, 127);
+
+    translate(0, 127);
+    push();
+    stroke(255);
+    fill(color(50, 50, 200));
+    rect(0, 0, 25, -faderValue);
+    pop();
+    //translate(0, 127);
+    fill(255);
+    textSize(12);
+    text("Fader", 0, 17);
+    pop();
+
+    // Show filter value
+    float fv = map(filterValue, -8, 8, 0, 127);
+    int middle = 127/2;
+    push();
+
+    translate(pos.x + 45, pos.y + 60);
+    fill(100);
+    rect(0, 0, 25, 127);
+
+    translate(0, middle);
+    push();
+    stroke(255);
+    fill(color(50, 50, 200));
+    rect(0, 0, 25, middle - fv);
+    pop();
+
+    translate(0, middle);
+    fill(255);
+    textSize(12);
+    text("Filter", 0, 17);
+    pop();
+
+    pop();
+
+    return;
   }
 
   // if the deck is playing, the filter is engaged and the volume is more than a certain value
   // then toggle the blur indicator on
   void isBlurOn() {
-    if (playing && faderValue > 30 && filterValue > 0) {
+    if (playing && faderValue > 30 && (abs(filterValue)) > 0) {
       blurOn = true;
     } else {
       blurOn = false;
@@ -113,7 +157,7 @@ class DeckSettings {
 class MixerState {
   DeckSettings[] decks;
   float filterIntensity; // stores 0 if the blur is off, or the
-  // highest filter value across the 4 decks if it is on 
+  // highest filter value across the 4 decks if it is on
 
   MixerState() {
     decks = new DeckSettings[4];
@@ -128,9 +172,9 @@ class MixerState {
     if ((deckA.blurOn) || (deckB.blurOn) || (deckC.blurOn) || (deckD.blurOn)) {
 
       filterIntensity = 0;
-      for (DeckSettings d : decks) {         
-        if (d.filterValue > filterIntensity) { 
-          filterIntensity = d.filterValue;
+      for (DeckSettings d : decks) {
+        if (abs(d.filterValue) > filterIntensity) {
+          filterIntensity = abs(d.filterValue);
         }
       }
     } else {
@@ -219,7 +263,7 @@ class HotcuePacks {
     //list all the hotcue packs in the directory
     File[] hotcueDirs = dataDir.listFiles(hotCueFilter);
 
-    if (hotcueDirs.length < 1) {  
+    if (hotcueDirs.length < 1) {
       println("No hotcue directory found");
       println("make sure that you have at least one directory,");
       println("inside the sketch's data directory, named \"hotcue_pack<x>\"");
@@ -241,7 +285,7 @@ class HotcuePacks {
     PImage hotcueImages[] = new PImage[8];
 
     File[] files = dir.listFiles();
-    for (int i=0; i < files.length; i++) { 
+    for (int i=0; i < files.length; i++) {
       String path = files[i].getAbsolutePath();
 
       if (path.toLowerCase().endsWith(".png")) {

@@ -1,5 +1,3 @@
-//wordSystem hcs;
-
 class WordPacks {
   ArrayList<WordPack> words;
   int currentWordPack;
@@ -36,7 +34,7 @@ class WordPacks {
 
   void display() {
     if (wordsOn) {
-      words.get(currentWordPack).display(alpha);
+      words.get(currentWordPack).draw(alpha);
     }
   }
 
@@ -64,7 +62,9 @@ class WordPack {
     currentWord = 0;
   }
 
-  void display(int a) {
+  void draw(int a) {
+
+    pushMatrix();
     textAlign(CENTER, CENTER);
     if (myBgPalette.getBlackOrWhite()) {
       fill(0, a);
@@ -72,8 +72,8 @@ class WordPack {
       fill(255, a);
     }
     textFont(font, 200);
-
     text(words[currentWord], width/2, height/2);
+    popMatrix();
   }
 
   void cueWord() {

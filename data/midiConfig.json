@@ -1,0 +1,33 @@
+{
+	"MIDIControls": [
+		{"channel": "0",  "control": "4", "controlType": "CC", "functionName": "setHotCuePackA"},
+		{"channel": "1",  "control": "4", "controlType": "CC", "functionName": "hotCueClearCueInfo"},
+		{"channel": "0",  "control": "5", "controlType": "CC", "functionName": "setHotCuePackB"},
+		{"channel": "1",  "control": "5", "controlType": "CC", "functionName": "hotCueClearCueInfo"},
+		{"channel": "0",  "control": "6", "controlType": "CC", "functionName": "setHotCuePackC"},
+		{"channel": "1",  "control": "6", "controlType": "CC", "functionName": "hotCueClearCueInfo"},
+		{"channel": "0",  "control": "7", "controlType": "CC", "functionName": "setHotCuePackD"},
+		{"channel": "1",  "control": "7", "controlType": "CC", "functionName": "hotCueClearCueInfo"},
+		{"channel": "0",  "control": "0", "controlType": "CC", "functionName": "cueVisualiser"},
+		{"channel": "1",  "control": "0", "controlType": "CC", "functionName": "selectVisualiser"},
+		{"channel": "1",  "control": "45", "controlType": "CC", "functionName": "setVisualiserKnobValue"},
+		{"channel": "1",  "control": "48", "controlType": "CC", "functionName": "setVisualiserScalingValue"},
+		{"channel": "1",  "control": "27", "controlType": "CC", "functionName": "toggleVisualiserButton1"},
+		{"channel": "1",  "control": "28", "controlType": "CC", "functionName": "toggleVisualiserButton2"},
+		{"channel": "1",  "control": "52", "controlType": "CC", "functionName": "setVisualiserFader1"},
+		{"channel": "1",  "control": "53", "controlType": "CC", "functionName": "setVisualiserFader2"},
+		{"channel": "1",  "control": "1", "controlType": "CC", "functionName": "toggleWaveform"},
+		{"channel": "0",  "control": "1", "controlType": "CC", "functionName": "setWaveformScale"},
+		{"channel": "1",  "control": "2", "controlType": "CC", "functionName": "toggleKaleidoscope"},
+		{"channel": "0",  "control": "16", "controlType": "CC", "functionName": "setKaleidoscopeRotation"},
+		{"channel": "0",  "control": "2", "controlType": "CC", "functionName": "setKaleidoscopeViewAngle"},
+		{"channel": "0",  "control": "3", "controlType": "CC", "functionName": "setBeatTextAlpha"},
+		{"channel": "1",  "control": "30", "controlType": "CC", "functionName": "toggleBackgroundBeatSync"},
+		{"channel": "1",  "control": "46", "controlType": "CC", "functionName": "toggleBlackOrWhiteBackground"},
+		{"channel": "1",  "control": "3", "controlType": "CC", "functionName": "toggleWordDisplay"},
+		{"channel": "1",  "control": "60", "controlType": "CC", "functionName": "selectPostShader"},
+		{"channel": "1",  "control": "61", "controlType": "CC", "functionName": "togglePostShader"},
+		{"channel": "1",  "control": "54", "controlType": "CC", "functionName": "setPostShaderValue1"},
+		{"channel": "1",  "control": "55", "controlType": "CC", "functionName": "setPostShaderValue2"}
+	]
+}

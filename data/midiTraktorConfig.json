@@ -1,0 +1,23 @@
+{
+	"MIDIControls": [
+		{"channel": "10",  "control": "100", "controlType": "CC", "functionName": "setVolumeDeckA"},
+		{"channel": "10",  "control": "101", "controlType": "CC", "functionName": "setVolumeDeckB"},
+		{"channel": "10",  "control": "102", "controlType": "CC", "functionName": "setVolumeDeckC"},
+		{"channel": "10",  "control": "103", "controlType": "CC", "functionName": "setVolumeDeckD"},
+		{"channel": "10",  "control": "110", "controlType": "CC", "functionName": "setIsPlayingDeckA"},
+		{"channel": "10",  "control": "111", "controlType": "CC", "functionName": "setIsPlayingDeckB"},
+		{"channel": "10",  "control": "112", "controlType": "CC", "functionName": "setIsPlayingDeckC"},
+		{"channel": "10",  "control": "113", "controlType": "CC", "functionName": "setIsPlayingDeckD"},
+		{"channel": "10",  "control": "1",   "controlType": "CC", "functionName": "readyHotCueDeckA"},
+		{"channel": "10",  "control": "2",   "controlType": "CC", "functionName": "readyHotCueDeckB"},
+		{"channel": "10",  "control": "3",   "controlType": "CC", "functionName": "readyHotCueDeckC"},
+		{"channel": "10",  "control": "4",   "controlType": "CC", "functionName": "readyHotCueDeckD"},
+		{"channel": "10",  "control": "105", "controlType": "CC", "functionName": "setFilterA"},
+		{"channel": "10",  "control": "106", "controlType": "CC", "functionName": "setFilterB"},
+		{"channel": "10",  "control": "107", "controlType": "CC", "functionName": "setFilterC"},
+		{"channel": "10",  "control": "108", "controlType": "CC", "functionName": "setFilterD"},
+		{"channel": "10",  "control": "64",  "controlType": "CC", "functionName": "setDelayStatus"},
+		{"channel": "10",  "control": "65",  "controlType": "CC", "functionName": "setGlitchStatus"},
+		{"channel": "10",  "control": "41",  "controlType": "CC", "functionName": "triggerBeatActions"}
+	]
+}

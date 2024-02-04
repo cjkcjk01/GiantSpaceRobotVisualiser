@@ -10,7 +10,7 @@ class BlurShader {
     intensity = 0;
     on = true;
 
-    shade = loadShader("blurFrag.glsl", "blurVert.glsl");
+    shade = loadShader("Shaders/blurFrag.glsl", "Shaders/blurVert.glsl");
     shade.set("blurDegree", 0.0);
   }
 
@@ -101,7 +101,7 @@ abstract class VisShader {
     shade = loadShader(filename);
     x = width/2;
     y = height/2;
-}
+  }
 
   void draw() {
     filter(shade);
@@ -118,7 +118,7 @@ abstract class VisShader {
 
 class ShaderBrcosa extends VisShader {
   ShaderBrcosa() {
-    super("brcosa", "brcosa.glsl");
+    super("brcosa", "Shaders/brcosa.glsl");
     x = width/3;
     y = 10;//height/3;
     shade.set("brightness", 1.0);
@@ -133,7 +133,7 @@ class ShaderBrcosa extends VisShader {
 
 class ShaderHue extends VisShader {
   ShaderHue() {
-    super("hue", "hue.glsl");
+    super("hue", "Shaders/hue.glsl");
   }
 
   void draw() {
@@ -144,7 +144,7 @@ class ShaderHue extends VisShader {
 
 class ShaderPixelate extends VisShader {
   ShaderPixelate() {
-    super("pixelate", "pixelate.glsl");
+    super("pixelate", "Shaders/pixelate.glsl");
   }
 
   void draw() {
@@ -155,7 +155,7 @@ class ShaderPixelate extends VisShader {
 
 class ShaderChannels extends VisShader {
   ShaderChannels() {
-    super("channels", "channels.glsl");
+    super("channels", "Shaders/channels.glsl");
   }
 
   void draw() {
@@ -171,7 +171,7 @@ class ShaderChannels extends VisShader {
 
 class ShaderThreshold extends VisShader {
   ShaderThreshold() {
-    super("threshold", "threshold.glsl");
+    super("threshold", "Shaders/threshold.glsl");
   }
 
   void draw() {
@@ -182,7 +182,7 @@ class ShaderThreshold extends VisShader {
 
 class ShaderNeon extends VisShader {
   ShaderNeon() {
-    super("neon", "neon.glsl");
+    super("neon", "Shaders/neon.glsl");
   }
 
   void draw() {
@@ -194,7 +194,7 @@ class ShaderNeon extends VisShader {
 
 class ShaderDeform extends VisShader {
   ShaderDeform() {
-    super("deform", "deform.glsl");
+    super("deform", "Shaders/deform.glsl");
   }
 
   void draw() {
@@ -207,7 +207,7 @@ class ShaderDeform extends VisShader {
 
 class ShaderPixelRolls extends VisShader {
   ShaderPixelRolls() {
-    super("pixelRolls", "pixelrolls.glsl");
+    super("pixelRolls", "Shaders/pixelrolls.glsl");
   }
 
   void draw() {
@@ -221,7 +221,7 @@ class ShaderPixelRolls extends VisShader {
 
 class ShaderModcolor extends VisShader {
   ShaderModcolor() {
-    super("modcolor", "modcolor.glsl");
+    super("modcolor", "Shaders/modcolor.glsl");
   }
 
   void draw() {
@@ -234,7 +234,7 @@ class ShaderModcolor extends VisShader {
 
 class ShaderHalftone extends VisShader {
   ShaderHalftone() {
-    super("halftone", "halftone.glsl");
+    super("halftone", "Shaders/halftone.glsl");
   }
 
   void draw() {
@@ -245,7 +245,7 @@ class ShaderHalftone extends VisShader {
 
 class ShaderInvert extends VisShader {
   ShaderInvert() {
-    super("inversion", "invert.glsl");
+    super("inversion", "Shaders/invert.glsl");
   }
   void draw() {
     super.draw();
@@ -254,7 +254,7 @@ class ShaderInvert extends VisShader {
 
 class ShaderVHSGlitch extends VisShader {
   ShaderVHSGlitch() {
-    super("VHS Glitch", "vhs_glitch.glsl");
+    super("VHS Glitch", "Shaders/vhs_glitch.glsl");
     shade.set("iResolution", float(width), float(height));
   }
   void draw() {
@@ -265,7 +265,7 @@ class ShaderVHSGlitch extends VisShader {
 
 class ShaderSobel extends VisShader {
   ShaderSobel() {
-    super("Sobel", "sobel.glsl");
+    super("Sobel", "Shaders/sobel.glsl");
     shade.set("iResolution", float(width), float(height));
   }
   void draw() {
@@ -274,16 +274,28 @@ class ShaderSobel extends VisShader {
 }
 
 class ShaderKaleidoscope extends VisShader {
-  int viewAngleMod;
-  float rot;
+  float viewAngle;
+  float rotation;
 
   ShaderKaleidoscope() {
-    super("Kaleidoscope", "kaleidoscope.glsl");
-    shade.set("rotation", 0);
+    super("Kaleidoscope", "Shaders/kaleidoscope.glsl");
+    shade.set("rotation", rotation);
     shade.set("viewAngle", TWO_PI/10 );
+    shade.set("viewAngle", PI/10 );
   }
 
   void draw() {
     shader(shade);
+  }
+
+  void setRotation(int value) {
+    rotation = map(value, 0, 127, 0, TWO_PI);
+    shade.set("rotation", rotation);
+  }
+  
+  void setViewAngle(int value) {
+    viewAngle = map(value, 0, 127, 0, TWO_PI);
+    shade.set("viewAngle", viewAngle );
+        println("viewAngle=" + viewAngle);
   }
 }
